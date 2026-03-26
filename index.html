@@ -1,979 +1,709 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Elevated Grace Collective</title>
-    <meta
-      name="description"
-      content="The Elevated Grace Collective: Grace is the standard. Poise is the power. Pretty is the presence."
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Elevated Grace Collective</title>
+  <meta name="description" content="The Elevated Grace Collective. Grace is the standard. Poise is the power. Pretty is the presence.">
 
-    <style>
-      :root{
-        --bg: #07070a;
-        --panel: rgba(255,255,255,0.06);
-        --panel2: rgba(255,255,255,0.085);
-        --text: rgba(255,255,255,0.92);
-        --muted: rgba(255,255,255,0.68);
+  <style>
+    :root{
+      --bg: #07070a;
+      --bg-soft: #111117;
+      --panel: rgba(255,255,255,0.06);
+      --panel-border: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.93);
+      --muted: rgba(255,255,255,0.72);
+      --gold: #d4af37;
+      --purple: #b98ae9;
+      --purple-deep: #6f2da8;
+      --pink: #e98bb2;
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --radius: 22px;
+      --max: 1140px;
+    }
 
-        --gold: #D4AF37;
-        --purple: #6F2DA8;
-        --pink: #E75480;
+    * { box-sizing: border-box; }
 
-        --ring: rgba(212,175,55,0.35);
-        --shadow: 0 18px 60px rgba(0,0,0,0.55);
-        --radius: 18px;
-        --max: 1120px;
-      }
+    html { scroll-behavior: smooth; }
 
-      *{ box-sizing: border-box; }
-      html, body{ height: 100%; scroll-behavior: smooth; }
-      body{
-        margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-        color: var(--text);
-        background:
-          radial-gradient(800px 500px at 70% 10%, rgba(111,45,168,0.18), transparent 60%),
-          radial-gradient(700px 500px at 20% 30%, rgba(231,84,128,0.14), transparent 62%),
-          radial-gradient(700px 500px at 50% 90%, rgba(212,175,55,0.12), transparent 60%),
-          linear-gradient(180deg, #050508 0%, #090910 35%, #06060a 100%);
-        overflow-x: hidden;
-      }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(800px 500px at 80% 10%, rgba(111,45,168,0.20), transparent 60%),
+        radial-gradient(700px 450px at 20% 20%, rgba(233,139,178,0.16), transparent 60%),
+        radial-gradient(700px 450px at 50% 100%, rgba(212,175,55,0.12), transparent 60%),
+        linear-gradient(180deg, #050508 0%, #090910 45%, #06060a 100%);
+      overflow-x: hidden;
+    }
 
-      a{ color: inherit; text-decoration: none; }
-      .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    img { max-width: 100%; display: block; }
 
-      header{
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(7,7,10,0.72);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
 
-      .nav{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 0;
-        gap: 16px;
-      }
+    .wrap{
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-      .brand{
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        min-width: 240px;
-      }
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7,7,10,0.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
-      .mark{
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        background:
-          radial-gradient(circle at 30% 30%, rgba(231,84,128,0.35), transparent 55%),
-          radial-gradient(circle at 70% 30%, rgba(111,45,168,0.35), transparent 55%),
-          radial-gradient(circle at 50% 85%, rgba(212,175,55,0.30), transparent 55%),
-          linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
-        border: 1px solid rgba(255,255,255,0.14);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-        display: grid;
-        place-items: center;
-      }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 14px 0;
+      flex-wrap: wrap;
+    }
 
-      .crown{
-        width: 22px;
-        height: 22px;
-      }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
 
-      .brand h1{
-        font-size: 14px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        margin: 0;
-        line-height: 1.1;
-      }
+    .brand-mini{
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(233,139,178,0.32), transparent 55%),
+        radial-gradient(circle at 70% 30%, rgba(111,45,168,0.32), transparent 55%),
+        radial-gradient(circle at 50% 85%, rgba(212,175,55,0.25), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.12);
+      display:grid;
+      place-items:center;
+      font-size: 18px;
+    }
 
-      .brand p{
-        margin: 2px 0 0;
-        font-size: 12px;
-        color: var(--muted);
-        letter-spacing: 0.06em;
+    .brand h1{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .brand p{
+      margin:2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a{
+      font-size: 13px;
+      color: rgba(255,255,255,0.82);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    nav a:hover{
+      background: rgba(255,255,255,0.06);
+    }
+
+    .btn-row{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.95);
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+    }
+
+    .btn:hover{
+      background: rgba(255,255,255,0.10);
+    }
+
+    .btn-primary{
+      border-color: rgba(212,175,55,0.45);
+      background: linear-gradient(180deg, rgba(212,175,55,0.22), rgba(212,175,55,0.08));
+    }
+
+    .hero{
+      padding: 52px 0 34px;
+    }
+
+    .hero-logo{
+      text-align:center;
+      margin-bottom: 34px;
+    }
+
+    .hero-logo img{
+      max-width: 220px;
+      margin: 0 auto;
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,0.20));
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 34px;
+      align-items:center;
+    }
+
+    .hero-photo img{
+      width:100%;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+      object-fit: cover;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: rgba(255,255,255,0.64);
+      margin-bottom: 10px;
+    }
+
+    .hero h2{
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.05;
+    }
+
+    .hero p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .tagline{
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(212,175,55,0.28);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .gold{ color: var(--gold); }
+    .purple{ color: var(--purple); }
+    .pink{ color: var(--pink); }
+
+    section{
+      padding: 42px 0;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h3{
+      margin:0;
+      font-size: 24px;
+    }
+
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-pad{
+      padding: 22px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .card h4{
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .badge-row{
+      margin-top: 14px;
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge{
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.84);
+      font-size: 12px;
+    }
+
+    .event-feature{
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-feature::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(500px 200px at 90% 10%, rgba(111,45,168,0.18), transparent 60%),
+        radial-gradient(450px 180px at 10% 90%, rgba(233,139,178,0.16), transparent 60%);
+      pointer-events:none;
+    }
+
+    .event-feature .inner{
+      position:relative;
+      z-index:1;
+      padding: 24px;
+    }
+
+    .event-label{
+      display:inline-block;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.28);
+      background: rgba(212,175,55,0.08);
+    }
+
+    .event-feature h4{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.08;
+    }
+
+    .event-feature p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16px;
+      max-width: 800px;
+    }
+
+    .contact-list{
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .contact-list a{
+      color: #fff;
+    }
+
+    .contact-list a:hover{
+      color: var(--gold);
+    }
+
+    .form{
+      display:grid;
+      gap: 10px;
+    }
+
+    input, textarea{
+      width:100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.24);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    textarea{
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus{
+      border-color: rgba(212,175,55,0.45);
+      box-shadow: 0 0 0 6px rgba(212,175,55,0.10);
+    }
+
+    footer{
+      padding: 28px 0 48px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.64);
+      margin-top: 24px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+
+    .footer-links{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover{
+      color: #fff;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid,
+      .grid-3,
+      .grid-2{
+        grid-template-columns: 1fr;
       }
 
       nav ul{
-        list-style: none;
-        display: flex;
-        gap: 18px;
-        padding: 0;
-        margin: 0;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a{
-        font-size: 13px;
-        color: rgba(255,255,255,0.78);
-        padding: 8px 10px;
-        border-radius: 999px;
-        transition: all 160ms ease;
-        border: 1px solid transparent;
-      }
-
-      nav a:hover{
-        color: rgba(255,255,255,0.95);
-        border-color: rgba(255,255,255,0.14);
-        background: rgba(255,255,255,0.05);
-      }
-
-      .ctaRow{
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-      }
-
-      .btn{
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        font-weight: 650;
-        font-size: 13px;
-        border: 1px solid rgba(255,255,255,0.14);
-        background: rgba(255,255,255,0.06);
-        color: rgba(255,255,255,0.92);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-        transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
-        cursor: pointer;
-      }
-
-      .btn:hover{
-        transform: translateY(-1px);
-        background: rgba(255,255,255,0.085);
-        border-color: rgba(255,255,255,0.22);
-      }
-
-      .btnPrimary{
-        border-color: rgba(212,175,55,0.42);
-        background: linear-gradient(180deg, rgba(212,175,55,0.22), rgba(212,175,55,0.08));
-      }
-
-      .btnPrimary:hover{
-        border-color: rgba(212,175,55,0.70);
-        background: linear-gradient(180deg, rgba(212,175,55,0.28), rgba(212,175,55,0.10));
+        display:none;
       }
 
       .hero{
-        padding: 64px 0 26px;
+        padding-top: 36px;
       }
 
-      .heroGrid{
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 26px;
-        align-items: center;
+      .hero-logo img{
+        max-width: 180px;
       }
+    }
+  </style>
+</head>
+<body>
 
-      .kicker{
-        display: inline-flex;
-        gap: 10px;
-        align-items: center;
-        padding: 8px 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,0.12);
-        background: rgba(255,255,255,0.05);
-        color: rgba(255,255,255,0.80);
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top">
+          <div class="brand-mini">♛</div>
+          <div>
+            <h1>The Elevated Grace Collective</h1>
+            <p>Grace • Poise • Presence</p>
+          </div>
+        </a>
 
-      .dot{
-        width: 8px;
-        height: 8px;
-        border-radius: 99px;
-        background: linear-gradient(135deg, var(--pink), var(--purple));
-        box-shadow: 0 0 0 6px rgba(231,84,128,0.08);
-      }
+        <nav>
+          <ul>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#pillars">Pillars</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
 
-      .hero h2{
-        margin: 16px 0 10px;
-        font-size: clamp(34px, 4.6vw, 58px);
-        line-height: 1.04;
-        letter-spacing: -0.02em;
-      }
+        <div class="btn-row">
+          <a class="btn" href="#events">Upcoming Event</a>
+          <a class="btn btn-primary" href="https://www.eventbrite.com/e/pearls-in-power-mothers-day-brunch-tickets-1985527372821?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer">Reserve Your Seat</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      .hero h2 .gold{ color: var(--gold); }
-      .hero h2 .purple{ color: #B98AE9; }
-      .hero h2 .pink{ color: #FF8FB0; }
+  <main id="top">
 
-      .hero p{
-        margin: 0;
-        color: rgba(255,255,255,0.75);
-        font-size: 16px;
-        line-height: 1.7;
-        max-width: 62ch;
-      }
-
-      .taglineCard{
-        margin-top: 18px;
-        padding: 16px 16px;
-        border-radius: var(--radius);
-        border: 1px solid rgba(212,175,55,0.28);
-        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.035));
-        box-shadow: var(--shadow);
-      }
-
-      .taglineCard strong{
-        display: block;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        font-size: 12px;
-        color: rgba(255,255,255,0.82);
-        margin-bottom: 8px;
-      }
-
-      .tagline{
-        font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-        font-size: 18px;
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      .tagline .g{ color: var(--gold); }
-      .tagline .p1{ color: #C7A0FF; }
-      .tagline .p2{ color: #FF8FB0; }
-
-      .heroActions{
-        margin-top: 18px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-      }
-
-      .panel{
-        border-radius: var(--radius);
-        background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
-        border: 1px solid rgba(255,255,255,0.10);
-        box-shadow: var(--shadow);
-      }
-
-      .sideCard{
-        padding: 18px;
-      }
-
-      .sideCard h3{
-        margin: 0;
-        font-size: 14px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.82);
-      }
-
-      .sideCard .big{
-        margin: 10px 0 0;
-        font-size: 20px;
-        line-height: 1.35;
-        font-weight: 680;
-      }
-
-      .sideCard .big span{
-        color: var(--gold);
-      }
-
-      .sideCard .list{
-        margin: 16px 0 0;
-        display: grid;
-        gap: 10px;
-      }
-
-      .pill{
-        padding: 12px 12px;
-        border-radius: 14px;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.10);
-      }
-
-      .pill b{
-        display: block;
-        font-size: 13px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .pill small{
-        display: block;
-        margin-top: 6px;
-        color: rgba(255,255,255,0.70);
-        line-height: 1.5;
-        font-size: 13px;
-      }
-
-      .pill b.gold{ color: var(--gold); }
-      .pill b.purple{ color: #C7A0FF; }
-      .pill b.pink{ color: #FF8FB0; }
-
-      section{
-        padding: 44px 0;
-      }
-
-      .sectionHead{
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 18px;
-        margin-bottom: 18px;
-      }
-
-      .sectionHead h3{
-        margin: 0;
-        font-size: 22px;
-        letter-spacing: -0.01em;
-      }
-
-      .sectionHead p{
-        margin: 0;
-        color: rgba(255,255,255,0.70);
-        max-width: 68ch;
-        line-height: 1.6;
-        font-size: 14px;
-      }
-
-      .grid3{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-
-      .card{
-        padding: 18px;
-      }
-
-      .card h4{
-        margin: 0 0 10px;
-        font-size: 16px;
-        letter-spacing: 0.02em;
-      }
-
-      .card p{
-        margin: 0;
-        color: rgba(255,255,255,0.70);
-        line-height: 1.65;
-        font-size: 14px;
-      }
-
-      .badgeRow{
-        margin-top: 14px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .badge{
-        font-size: 12px;
-        padding: 7px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,0.12);
-        background: rgba(255,255,255,0.05);
-        color: rgba(255,255,255,0.78);
-      }
-
-      .badge.gold{ border-color: rgba(212,175,55,0.35); }
-      .badge.purple{ border-color: rgba(111,45,168,0.35); }
-      .badge.pink{ border-color: rgba(231,84,128,0.35); }
-
-      .split{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-
-      .eventHero{
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 14px;
-      }
-
-      .eventFeature{
-        padding: 22px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .eventFeature::before{
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(500px 260px at 100% 0%, rgba(111,45,168,0.14), transparent 60%),
-          radial-gradient(420px 240px at 0% 100%, rgba(231,84,128,0.14), transparent 60%);
-        pointer-events: none;
-      }
-
-      .eventEyebrow{
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(212,175,55,0.22);
-        background: rgba(212,175,55,0.08);
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.85);
-      }
-
-      .eventTitle{
-        margin: 14px 0 12px;
-        font-size: clamp(28px, 4vw, 42px);
-        line-height: 1.08;
-      }
-
-      .eventBody{
-        position: relative;
-        z-index: 1;
-      }
-
-      .eventBody p + p{
-        margin-top: 10px;
-      }
-
-      .metaCard{
-        padding: 18px;
-      }
-
-      .metaList{
-        display: grid;
-        gap: 10px;
-        margin-top: 14px;
-      }
-
-      .metaItem{
-        padding: 12px;
-        border-radius: 14px;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.10);
-      }
-
-      .metaItem b{
-        display: block;
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.82);
-        margin-bottom: 4px;
-      }
-
-      .form{
-        display: grid;
-        gap: 10px;
-      }
-
-      input, textarea{
-        width: 100%;
-        padding: 12px 12px;
-        border-radius: 14px;
-        border: 1px solid rgba(255,255,255,0.12);
-        background: rgba(0,0,0,0.25);
-        color: rgba(255,255,255,0.92);
-        outline: none;
-      }
-
-      input:focus, textarea:focus{
-        border-color: rgba(212,175,55,0.45);
-        box-shadow: 0 0 0 6px rgba(212,175,55,0.10);
-      }
-
-      textarea{
-        min-height: 110px;
-        resize: vertical;
-      }
-
-      footer{
-        padding: 28px 0 44px;
-        color: rgba(255,255,255,0.62);
-        border-top: 1px solid rgba(255,255,255,0.08);
-        margin-top: 24px;
-      }
-
-      .fineprint{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .miniLinks{
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-      }
-
-      .miniLinks a{
-        color: rgba(255,255,255,0.66);
-        font-size: 13px;
-      }
-
-      .miniLinks a:hover{
-        color: rgba(255,255,255,0.88);
-      }
-
-      @media (max-width: 920px){
-        .nav{
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .heroGrid,
-        .grid3,
-        .split,
-        .eventHero{
-          grid-template-columns: 1fr;
-        }
-
-        nav ul{
-          display: none;
-        }
-
-        .brand{
-          min-width: unset;
-        }
-
-        .ctaRow{
-          width: 100%;
-          justify-content: flex-start;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <header>
+    <section class="hero">
       <div class="wrap">
-        <div class="nav">
-          <a class="brand" href="#top" aria-label="The Elevated Grace Collective home">
-            <div class="mark" aria-hidden="true">
-              <svg class="crown" viewBox="0 0 24 24" fill="none">
-                <path d="M3 9l4 3 5-7 5 7 4-3v10H3V9z" stroke="rgba(255,255,255,0.88)" stroke-width="1.3" />
-                <path d="M7.2 19h9.6" stroke="rgba(255,255,255,0.70)" stroke-width="1.3" />
-              </svg>
-            </div>
-            <div>
-              <h1>The Elevated Grace Collective</h1>
-              <p>Grace • Poise • Pretty</p>
-            </div>
-          </a>
 
-          <nav aria-label="Primary navigation">
-            <ul>
-              <li><a href="#mission">Mission</a></li>
-              <li><a href="#pillars">Pillars</a></li>
-              <li><a href="#programs">Programs</a></li>
-              <li><a href="#events">Events</a></li>
-              <li><a href="#give">Give</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
+        <div class="hero-logo">
+          <img src="logo.png" alt="The Elevated Grace Collective logo">
+        </div>
 
-          <div class="ctaRow">
-            <a class="btn btnPrimary" target="_blank" rel="noopener noreferrer" href="https://www.eventbrite.com/e/pearls-in-power-mothers-day-brunch-tickets-1985527372821?aff=oddtdtcreator">Reserve Your Seat</a>
-            <a class="btn" href="#events">Upcoming Events</a>
-            <a class="btn" href="#give">Donate</a>
+        <div class="hero-grid">
+          <div class="hero-photo">
+            <img src="founder.jpg" alt="Founder portrait">
+          </div>
+
+          <div>
+            <span class="eyebrow">Founder, The Elevated Grace Collective</span>
+
+            <h2>Candyce Allen</h2>
+
+            <p>
+              With a background in recruiting leadership, she has built a career identifying talent, developing people, and elevating professionals into positions of impact.
+            </p>
+
+            <p>
+              She founded <strong>The Elevated Grace Collective</strong> to empower girls and women through confidence, social etiquette, and presence, creating a modern, faith leaning space where grace is cultivated, poise is strengthened, and purpose is elevated.
+            </p>
+
+            <div class="tagline">
+              <span class="gold">Grace</span> Is the Standard.
+              <span class="purple">Poise</span> Is the Power.
+              <span class="pink">Pretty</span> Is the Presence.
+            </div>
+
+            <div class="btn-row" style="margin-top:22px;">
+              <a class="btn btn-primary" href="#events">View Event</a>
+              <a class="btn" href="#contact">Connect</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="mission">
+      <div class="wrap">
+        <div class="section-head">
+          <h3>Mission</h3>
+          <p>
+            We empower girls and women by strengthening self esteem, building confidence, and teaching social etiquette through a modern, luxury experience rooted in grace.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel panel-pad card">
+            <h4>Our Vision</h4>
+            <p>
+              To cultivate a multi generational sisterhood where women and girls walk in excellence, lead with humility, and show up with unmistakable presence.
+            </p>
+            <div class="badge-row">
+              <span class="badge">Confidence</span>
+              <span class="badge">Etiquette</span>
+              <span class="badge">Presence</span>
+            </div>
+          </div>
+
+          <div class="panel panel-pad card">
+            <h4>Our Values</h4>
+            <p>
+              Grace over ego. Excellence over noise. Service over spotlight. Faith as foundation, not performance.
+            </p>
+            <div class="badge-row">
+              <span class="badge">Faith leaning</span>
+              <span class="badge">Modern luxury</span>
+              <span class="badge">Multi generational</span>
+            </div>
           </div>
         </div>
       </div>
-    </header>
+    </section>
 
-    <main id="top">
+    <section id="events">
       <div class="wrap">
-        <section class="hero">
-          <div class="heroGrid">
-            <div>
-              <div class="kicker">
-                <span class="dot" aria-hidden="true"></span>
-                Grace • Poise • Pretty
-              </div>
+        <div class="section-head">
+          <h3>Featured Event</h3>
+          <p>
+            A signature experience designed to gather women together in beauty, strength, and celebration.
+          </p>
+        </div>
 
-              <h2>
-                <span class="gold">Elevated</span> standards for
-                <span class="purple">women</span> and
-                <span class="pink">girls</span> of every generation.
-              </h2>
+        <div class="panel event-feature">
+          <div class="inner">
+            <span class="event-label">Now Featured</span>
 
-              <p>
-                The Elevated Grace Collective is a multi generational nonprofit community committed to confidence, self esteem,
-                and social etiquette, grounded in faith and expressed through excellence.
-              </p>
+            <h4><span class="pink">Pearls in Power</span> Mother’s Day Brunch</h4>
 
-              <div class="taglineCard">
-                <strong>Our Declaration</strong>
-                <p class="tagline">
-                  <span class="g">Grace</span> Is the Standard.
-                  <span class="p1">Poise</span> Is the Power.
-                  <span class="p2">Pretty</span> Is the Presence.
-                </p>
-              </div>
-
-              <div class="heroActions">
-                <a class="btn btnPrimary" href="#programs">Explore Programs</a>
-                <a class="btn" href="#contact">Partner With Us</a>
-                <a class="btn" href="#give">Sponsor a Girl</a>
-              </div>
-            </div>
-
-            <aside class="panel sideCard" aria-label="Highlights">
-              <h3>What we build</h3>
-              <div class="big">A standard of <span>confidence</span> that looks like character.</div>
-
-              <div class="list">
-                <div class="pill">
-                  <b class="gold">Grace</b>
-                  <small>Inner grounding, faith centered identity, and emotional leadership.</small>
-                </div>
-                <div class="pill">
-                  <b class="purple">Poise</b>
-                  <small>Communication, self presentation, etiquette, and leadership presence.</small>
-                </div>
-                <div class="pill">
-                  <b class="pink">Pretty</b>
-                  <small>Polish with purpose, elevated standards, and confident self expression.</small>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        <section id="mission">
-          <div class="sectionHead">
-            <h3>Mission</h3>
             <p>
-              We empower girls and women by strengthening self esteem, building confidence, and teaching social etiquette through
-              a modern, luxury experience rooted in grace.
+              Join us for a special Mother’s Day brunch experience celebrating grace, womanhood, and elevated presence. Reserve your seat through Eventbrite.
             </p>
-          </div>
 
-          <div class="split">
-            <div class="panel card">
-              <h4>Our Vision</h4>
-              <p>
-                To cultivate a multi generational sisterhood where women and girls walk in excellence, lead with humility, and
-                show up with unmistakable presence.
-              </p>
-              <div class="badgeRow">
-                <span class="badge gold">Confidence</span>
-                <span class="badge purple">Etiquette</span>
-                <span class="badge pink">Presence</span>
-              </div>
+            <div class="badge-row" style="margin-top:16px;">
+              <span class="badge">Mother’s Day Brunch</span>
+              <span class="badge">Eventbrite Registration</span>
+              <span class="badge">The Elevated Grace Collective</span>
             </div>
 
-            <div class="panel card">
-              <h4>Our Values</h4>
-              <p>
-                Grace over ego. Excellence over noise. Service over spotlight. Faith as foundation, not performance.
-              </p>
-              <div class="badgeRow">
-                <span class="badge gold">Faith leaning</span>
-                <span class="badge purple">Modern luxury</span>
-                <span class="badge pink">Multi generational</span>
-              </div>
+            <div class="btn-row" style="margin-top:20px;">
+              <a class="btn btn-primary" href="https://www.eventbrite.com/e/pearls-in-power-mothers-day-brunch-tickets-1985527372821?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer">Reserve Your Seat</a>
+              <a class="btn" href="#contact">Partner for This Event</a>
             </div>
           </div>
-        </section>
-
-        <section id="pillars">
-          <div class="sectionHead">
-            <h3>Our Pillars</h3>
-            <p>
-              These are the three anchors behind our curriculum, mentorship, events, and community experiences.
-            </p>
-          </div>
-
-          <div class="grid3">
-            <div class="panel card">
-              <h4><span style="color: var(--gold);">Grace</span> is the Standard</h4>
-              <p>
-                Identity, self worth, and grounded confidence. We build women and girls who lead with calm strength and
-                self respect.
-              </p>
-              <div class="badgeRow">
-                <span class="badge gold">Character</span>
-                <span class="badge gold">Faith</span>
-                <span class="badge gold">Self worth</span>
-              </div>
-            </div>
-
-            <div class="panel card">
-              <h4><span style="color: #C7A0FF;">Poise</span> is the Power</h4>
-              <p>
-                Communication, etiquette, and presence. We teach the skills that help you walk in rooms like you belong there.
-              </p>
-              <div class="badgeRow">
-                <span class="badge purple">Public speaking</span>
-                <span class="badge purple">Etiquette</span>
-                <span class="badge purple">Leadership</span>
-              </div>
-            </div>
-
-            <div class="panel card">
-              <h4><span style="color: #FF8FB0;">Pretty</span> is the Presence</h4>
-              <p>
-                Polish with purpose. Style, grooming, and presentation as a reflection of dignity, confidence, and excellence.
-              </p>
-              <div class="badgeRow">
-                <span class="badge pink">Presentation</span>
-                <span class="badge pink">Confidence</span>
-                <span class="badge pink">Standards</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="programs">
-          <div class="sectionHead">
-            <h3>Programs</h3>
-            <p>
-              Make sure to follow us on our journey!
-            </p>
-          </div>
-
-          <div class="grid3">
-            <div class="panel card">
-              <h4>Girls Academy</h4>
-              <p>
-                Confidence and etiquette foundations for younger girls, taught through interactive workshops, guided practice,
-                and uplifting mentorship.
-              </p>
-              <div class="badgeRow">
-                <span class="badge gold">Ages 7 to 12</span>
-                <span class="badge purple">Workshops</span>
-              </div>
-            </div>
-
-            <div class="panel card">
-              <h4>Teen Leadership Circle</h4>
-              <p>
-                Poise building for teens, covering communication, self presentation, boundaries, and leadership in a faith leaning environment.
-              </p>
-              <div class="badgeRow">
-                <span class="badge purple">Ages 13 to 18</span>
-                <span class="badge pink">Mentorship</span>
-              </div>
-            </div>
-
-            <div class="panel card">
-              <h4>Women of Elevated Grace</h4>
-              <p>
-                Multi generational community experiences for women focused on leadership presence, etiquette, confidence, and legacy building.
-              </p>
-              <div class="badgeRow">
-                <span class="badge gold">Workshops</span>
-                <span class="badge pink">Sisterhood</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="events">
-          <div class="sectionHead">
-            <h3>Featured Event</h3>
-            <p>
-              A signature Mother’s Day experience designed for women of purpose, grace, and impact.
-            </p>
-          </div>
-
-          <div class="eventHero">
-            <div class="panel eventFeature">
-              <div class="eventBody">
-                <span class="eventEyebrow">Now Registering</span>
-                <h2 class="eventTitle">
-                  <span class="pink">Pearls in Power</span> Mother’s Day Brunch
-                </h2>
-
-                <p>
-                  Women of power, this is your room. An elegant brunch of purpose, pearls, and connection with limited seating.
-                </p>
-
-                <p>
-                  If you are a woman of influence, whether leading in the workplace, in ministry, or in business, your presence is requested.
-                  Pearls in Power is not simply a gathering. It is a curated experience designed for women who embody purpose, grace, and impact.
-                </p>
-
-                <p>
-                  Indulge in an elegant morning surrounded by distinguished women of vision, where every detail reflects beauty, excellence, and empowerment.
-                  We warmly welcome mothers, daughters, sisters, friends, and business partners to share in this unforgettable Mother’s Day occasion.
-                </p>
-
-                <p>
-                  <strong>Attire:</strong> Shades of purple, pink, and lavender. Pearls are a signature.
-                </p>
-
-                <div class="heroActions">
-                  <a class="btn btnPrimary" target="_blank" rel="noopener noreferrer" href="https://www.eventbrite.com/e/pearls-in-power-mothers-day-brunch-tickets-1985527372821?aff=oddtdtcreator">Reserve Your Seat</a>
-                  <a class="btn" href="#contact">Partner for This Event</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel metaCard">
-              <h4>Event Details</h4>
-              <div class="metaList">
-                <div class="metaItem">
-                  <b>Location</b>
-                  Matteson, Illinois
-                </div>
-                <div class="metaItem">
-                  <b>Experience</b>
-                  Elegant Mother’s Day Brunch
-                </div>
-                <div class="metaItem">
-                  <b>Theme</b>
-                  Pearls, purpose, power, and presence
-                </div>
-                <div class="metaItem">
-                  <b>Registration</b>
-                  Eventbrite
-                </div>
-              </div>
-
-              <div class="badgeRow">
-                <span class="badge gold">Brunch</span>
-                <span class="badge purple">Connection</span>
-                <span class="badge pink">Presence</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="give">
-          <div class="sectionHead">
-            <h3>Give</h3>
-            <p>
-              Donations help fund workshops, mentorship, and scholarship seats for girls and women.
-            </p>
-          </div>
-
-          <div class="grid3">
-            <div class="panel card">
-              <h4>Sponsor a Girl</h4>
-              <p>Cover a workshop seat, materials, and mentorship support for one participant.</p>
-              <div class="badgeRow">
-                <span class="badge gold">Scholarships</span>
-              </div>
-              <div style="margin-top: 14px;">
-                <button class="btn btnPrimary" onclick="fakeDonate('Sponsor a Girl')">Give</button>
-              </div>
-            </div>
-
-            <div class="panel card">
-              <h4>Partner as a Brand</h4>
-              <p>Support events, provide in kind resources, or become a signature sponsor.</p>
-              <div class="badgeRow">
-                <span class="badge purple">Sponsorship</span>
-              </div>
-              <div style="margin-top: 14px;">
-                <a class="btn btnPrimary" href="#contact">Become a partner</a>
-              </div>
-            </div>
-
-            <div class="panel card">
-              <h4>General Donation</h4>
-              <p>Fuel the mission. Build the standard. Expand the impact across generations.</p>
-              <div class="badgeRow">
-                <span class="badge pink">Impact</span>
-              </div>
-              <div style="margin-top: 14px;">
-                <button class="btn btnPrimary" onclick="fakeDonate('General Donation')">Donate</button>
-              </div>
-            </div>
-          </div>
-
-          <p id="donateMsg" style="margin: 14px 0 0; color: rgba(255,255,255,0.72);"></p>
-        </section>
-
-        <section id="contact">
-          <div class="sectionHead">
-            <h3>Contact</h3>
-            <p>
-              Use this form as a placeholder. When you are ready, connect it to your email service or a simple form tool.
-            </p>
-          </div>
-
-          <div class="split">
-            <div class="panel card">
-              <h4>Connect with us</h4>
-              <p>
-                For partnerships, workshops, speaking, volunteering, or donor questions, send a message and our team will respond.
-              </p>
-
-              <div class="badgeRow">
-                <span class="badge gold">Workshops</span>
-                <span class="badge purple">Mentorship</span>
-                <span class="badge pink">Events</span>
-              </div>
-
-              <div style="margin-top: 16px; color: rgba(255,255,255,0.70); font-size: 14px; line-height: 1.7;">
-                <div><b style="color: rgba(255,255,255,0.88);">Email:</b> <a href="mailto:gracepoisedpretty@gmail.com">gracepoisedpretty@gmail.com</a></div>
-                <div><b style="color: rgba(255,255,255,0.88);">Location:</b> Illinois</div>
-                <div><b style="color: rgba(255,255,255,0.88);">Social:</b> @elevatedgracecollective</div>
-              </div>
-            </div>
-
-            <div class="panel card">
-              <h4>Send a message</h4>
-              <form class="form" onsubmit="handleSubmit(event)">
-                <input required name="name" placeholder="Full name" />
-                <input required type="email" name="email" placeholder="Email address" />
-                <input name="subject" placeholder="Subject" />
-                <textarea required name="message" placeholder="Message"></textarea>
-                <button class="btn btnPrimary" type="submit">Send</button>
-                <p id="formMsg" style="margin: 6px 0 0; color: rgba(255,255,255,0.72); font-size: 13px;"></p>
-              </form>
-            </div>
-          </div>
-        </section>
-
-        <footer>
-          <div class="wrap fineprint">
-            <div>
-              <div style="font-weight: 650; color: rgba(255,255,255,0.86);">The Elevated Grace Collective</div>
-              <div style="font-size: 13px; margin-top: 4px;">
-                Grace Is the Standard. Poise Is the Power. Pretty Is the Presence.
-              </div>
-            </div>
-
-            <div class="miniLinks">
-              <a href="#mission">Mission</a>
-              <a href="#programs">Programs</a>
-              <a href="#events">Events</a>
-              <a href="#give">Give</a>
-              <a href="#contact">Contact</a>
-            </div>
-          </div>
-        </footer>
+        </div>
       </div>
-    </main>
+    </section>
 
-    <script>
-      function fakeDonate(type){
-        const el = document.getElementById("donateMsg");
-        el.textContent = "Email gracepoisedpretty@gmail.com to donate for: " + type + ".";
-      }
+    <section id="pillars">
+      <div class="wrap">
+        <div class="section-head">
+          <h3>Our Pillars</h3>
+          <p>
+            These are the anchors behind our curriculum, mentorship, events, and community experiences.
+          </p>
+        </div>
 
-      function handleSubmit(e){
-        e.preventDefault();
-        const msg = document.getElementById("formMsg");
-        msg.textContent = "Thank you. Please email gracepoisedpretty@gmail.com and we will get back to you.";
-        e.target.reset();
-      }
-    </script>
-  </body>
+        <div class="grid-3">
+          <div class="panel panel-pad card">
+            <h4><span class="gold">Grace</span> is the Standard</h4>
+            <p>
+              Identity, self worth, and grounded confidence. We build women and girls who lead with calm strength and self respect.
+            </p>
+          </div>
+
+          <div class="panel panel-pad card">
+            <h4><span class="purple">Poise</span> is the Power</h4>
+            <p>
+              Communication, etiquette, and presence. We teach the skills that help you walk in rooms like you belong there.
+            </p>
+          </div>
+
+          <div class="panel panel-pad card">
+            <h4><span class="pink">Pretty</span> is the Presence</h4>
+            <p>
+              Polish with purpose. Style, grooming, and presentation as a reflection of dignity, confidence, and excellence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs">
+      <div class="wrap">
+        <div class="section-head">
+          <h3>Programs</h3>
+          <p>
+            A simple structure you can expand as you grow.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="panel panel-pad card">
+            <h4>Girls Academy</h4>
+            <p>
+              Confidence and etiquette foundations for younger girls, taught through interactive workshops, guided practice, and uplifting mentorship.
+            </p>
+          </div>
+
+          <div class="panel panel-pad card">
+            <h4>Teen Leadership Circle</h4>
+            <p>
+              Poise building for teens, covering communication, self presentation, boundaries, and leadership in a faith leaning environment.
+            </p>
+          </div>
+
+          <div class="panel panel-pad card">
+            <h4>Women of Elevated Grace</h4>
+            <p>
+              Multi generational community experiences for women focused on leadership presence, etiquette, confidence, and legacy building.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <h3>Contact</h3>
+          <p>
+            For partnerships, workshops, speaking, volunteering, or donor questions, reach out below.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="panel panel-pad card">
+            <h4>Connect with us</h4>
+            <div class="contact-list">
+              <div><strong>Email:</strong> <a href="mailto:gracepoisepretty@gmail.com">gracepoisepretty@gmail.com</a></div>
+              <div><strong>Location:</strong> Illinois</div>
+              <div><strong>Social:</strong> @elevatedgracecollective</div>
+            </div>
+          </div>
+
+          <div class="panel panel-pad card">
+            <h4>Send a message</h4>
+            <form class="form" onsubmit="handleSubmit(event)">
+              <input required name="name" placeholder="Full name">
+              <input required type="email" name="email" placeholder="Email address">
+              <input name="subject" placeholder="Subject">
+              <textarea required name="message" placeholder="Message"></textarea>
+              <button class="btn btn-primary" type="submit">Send</button>
+              <p id="formMsg" style="margin: 6px 0 0; color: var(--muted); font-size: 13px;"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-row">
+          <div>
+            <div style="font-weight:700; color: rgba(255,255,255,0.9);">The Elevated Grace Collective</div>
+            <div style="font-size:13px; margin-top:4px;">Grace Is the Standard. Poise Is the Power. Pretty Is the Presence.</div>
+          </div>
+
+          <div class="footer-links">
+            <a href="#mission">Mission</a>
+            <a href="#events">Events</a>
+            <a href="#programs">Programs</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    function handleSubmit(e){
+      e.preventDefault();
+      document.getElementById("formMsg").textContent =
+        "Form submitted. To receive messages directly, connect this form to a form service later.";
+      e.target.reset();
+    }
+  </script>
+
+</body>
 </html>
