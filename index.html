@@ -8,17 +8,20 @@
 
   <style>
     :root{
-      --bg: #07070a;
-      --bg-soft: #111117;
-      --panel: rgba(255,255,255,0.06);
-      --panel-border: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.93);
-      --muted: rgba(255,255,255,0.72);
-      --gold: #d4af37;
-      --purple: #b98ae9;
-      --purple-deep: #6f2da8;
-      --pink: #e98bb2;
-      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --bg: #0b0a12;
+      --bg-soft: #151222;
+      --panel: rgba(255,255,255,0.07);
+      --panel-border: rgba(255,255,255,0.11);
+      --text: rgba(255,255,255,0.94);
+      --muted: rgba(255,255,255,0.74);
+
+      --pink: #f6c7da;
+      --purple: #b58ae6;
+      --purple-deep: #7d54b5;
+      --turquoise: #6ed9d1;
+      --gold: #d9b44a;
+
+      --shadow: 0 20px 60px rgba(0,0,0,0.42);
       --radius: 22px;
       --max: 1140px;
     }
@@ -32,10 +35,11 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(800px 500px at 80% 10%, rgba(111,45,168,0.20), transparent 60%),
-        radial-gradient(700px 450px at 20% 20%, rgba(233,139,178,0.16), transparent 60%),
-        radial-gradient(700px 450px at 50% 100%, rgba(212,175,55,0.12), transparent 60%),
-        linear-gradient(180deg, #050508 0%, #090910 45%, #06060a 100%);
+        radial-gradient(900px 520px at 80% 8%, rgba(181,138,230,0.22), transparent 60%),
+        radial-gradient(700px 420px at 15% 22%, rgba(246,199,218,0.18), transparent 60%),
+        radial-gradient(800px 420px at 82% 85%, rgba(110,217,209,0.18), transparent 60%),
+        radial-gradient(680px 400px at 45% 100%, rgba(217,180,74,0.14), transparent 58%),
+        linear-gradient(180deg, #09080f 0%, #100d1b 46%, #0c0b14 100%);
       overflow-x: hidden;
     }
 
@@ -55,7 +59,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(7,7,10,0.78);
+      background: rgba(11,10,18,0.80);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -80,14 +84,15 @@
       height: 42px;
       border-radius: 12px;
       background:
-        radial-gradient(circle at 30% 30%, rgba(233,139,178,0.32), transparent 55%),
-        radial-gradient(circle at 70% 30%, rgba(111,45,168,0.32), transparent 55%),
-        radial-gradient(circle at 50% 85%, rgba(212,175,55,0.25), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+        radial-gradient(circle at 28% 30%, rgba(246,199,218,0.34), transparent 55%),
+        radial-gradient(circle at 72% 28%, rgba(181,138,230,0.34), transparent 55%),
+        radial-gradient(circle at 52% 78%, rgba(110,217,209,0.30), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
       border: 1px solid rgba(255,255,255,0.12);
       display:grid;
       place-items:center;
       font-size: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
     }
 
     .brand h1{
@@ -115,13 +120,14 @@
 
     nav a{
       font-size: 13px;
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,0.84);
       padding: 8px 12px;
       border-radius: 999px;
+      transition: 0.18s ease;
     }
 
     nav a:hover{
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.07);
     }
 
     .btn-row{
@@ -138,19 +144,26 @@
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.95);
+      color: rgba(255,255,255,0.96);
       font-weight: 700;
       font-size: 13px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+      transition: 0.18s ease;
     }
 
     .btn:hover{
       background: rgba(255,255,255,0.10);
+      transform: translateY(-1px);
     }
 
     .btn-primary{
-      border-color: rgba(212,175,55,0.45);
-      background: linear-gradient(180deg, rgba(212,175,55,0.22), rgba(212,175,55,0.08));
+      border-color: rgba(217,180,74,0.48);
+      background: linear-gradient(180deg, rgba(217,180,74,0.24), rgba(217,180,74,0.10));
+    }
+
+    .btn-secondary{
+      border-color: rgba(110,217,209,0.36);
+      background: linear-gradient(180deg, rgba(110,217,209,0.18), rgba(110,217,209,0.06));
     }
 
     .hero{
@@ -175,7 +188,24 @@
       align-items:center;
     }
 
+    .hero-photo{
+      position: relative;
+    }
+
+    .hero-photo::before{
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(246,199,218,0.18), rgba(181,138,230,0.16), rgba(110,217,209,0.18));
+      filter: blur(8px);
+      z-index: 0;
+    }
+
     .hero-photo img{
+      position: relative;
+      z-index: 1;
       width:100%;
       border-radius: 22px;
       border: 1px solid rgba(255,255,255,0.14);
@@ -188,7 +218,7 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       font-size: 12px;
-      color: rgba(255,255,255,0.64);
+      color: rgba(255,255,255,0.66);
       margin-bottom: 10px;
     }
 
@@ -209,17 +239,18 @@
       margin-top: 20px;
       padding: 16px 18px;
       border-radius: 18px;
-      border: 1px solid rgba(212,175,55,0.28);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(217,180,74,0.28);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
       box-shadow: var(--shadow);
       font-family: Georgia, "Times New Roman", Times, serif;
       font-size: 20px;
       line-height: 1.6;
     }
 
-    .gold{ color: var(--gold); }
-    .purple{ color: var(--purple); }
     .pink{ color: var(--pink); }
+    .purple{ color: var(--purple); }
+    .turquoise{ color: var(--turquoise); }
+    .gold{ color: var(--gold); }
 
     section{
       padding: 42px 0;
@@ -247,7 +278,7 @@
     }
 
     .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
       border: 1px solid var(--panel-border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -293,9 +324,14 @@
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.84);
+      color: rgba(255,255,255,0.86);
       font-size: 12px;
     }
+
+    .badge-pink{ border-color: rgba(246,199,218,0.30); }
+    .badge-purple{ border-color: rgba(181,138,230,0.30); }
+    .badge-turquoise{ border-color: rgba(110,217,209,0.32); }
+    .badge-gold{ border-color: rgba(217,180,74,0.32); }
 
     .event-feature{
       position: relative;
@@ -307,8 +343,9 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(500px 200px at 90% 10%, rgba(111,45,168,0.18), transparent 60%),
-        radial-gradient(450px 180px at 10% 90%, rgba(233,139,178,0.16), transparent 60%);
+        radial-gradient(500px 200px at 90% 10%, rgba(181,138,230,0.18), transparent 60%),
+        radial-gradient(450px 180px at 10% 90%, rgba(110,217,209,0.16), transparent 60%),
+        radial-gradient(380px 160px at 30% 35%, rgba(246,199,218,0.14), transparent 60%);
       pointer-events:none;
     }
 
@@ -325,8 +362,8 @@
       text-transform: uppercase;
       padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(212,175,55,0.28);
-      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(217,180,74,0.28);
+      background: rgba(217,180,74,0.08);
     }
 
     .event-feature h4{
@@ -354,7 +391,7 @@
     }
 
     .contact-list a:hover{
-      color: var(--gold);
+      color: var(--turquoise);
     }
 
     .form{
@@ -367,7 +404,7 @@
       padding: 12px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.24);
+      background: rgba(0,0,0,0.22);
       color: #fff;
       font-size: 14px;
       outline: none;
@@ -379,8 +416,8 @@
     }
 
     input:focus, textarea:focus{
-      border-color: rgba(212,175,55,0.45);
-      box-shadow: 0 0 0 6px rgba(212,175,55,0.10);
+      border-color: rgba(110,217,209,0.48);
+      box-shadow: 0 0 0 6px rgba(110,217,209,0.10);
     }
 
     footer{
@@ -453,7 +490,7 @@
         </nav>
 
         <div class="btn-row">
-          <a class="btn" href="#events">Upcoming Event</a>
+          <a class="btn btn-secondary" href="#events">Upcoming Event</a>
           <a class="btn btn-primary" href="https://www.eventbrite.com/e/pearls-in-power-mothers-day-brunch-tickets-1985527372821?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer">Reserve Your Seat</a>
         </div>
       </div>
@@ -477,7 +514,7 @@
           <div>
             <span class="eyebrow">Founder, The Elevated Grace Collective</span>
 
-            <h2>Candyce Allen</h2>
+            <h2>Your Name</h2>
 
             <p>
               With a background in recruiting leadership, she has built a career identifying talent, developing people, and elevating professionals into positions of impact.
@@ -495,7 +532,7 @@
 
             <div class="btn-row" style="margin-top:22px;">
               <a class="btn btn-primary" href="#events">View Event</a>
-              <a class="btn" href="#contact">Connect</a>
+              <a class="btn btn-secondary" href="#contact">Connect</a>
             </div>
           </div>
         </div>
@@ -519,9 +556,9 @@
               To cultivate a multi generational sisterhood where women and girls walk in excellence, lead with humility, and show up with unmistakable presence.
             </p>
             <div class="badge-row">
-              <span class="badge">Confidence</span>
-              <span class="badge">Etiquette</span>
-              <span class="badge">Presence</span>
+              <span class="badge badge-pink">Confidence</span>
+              <span class="badge badge-purple">Etiquette</span>
+              <span class="badge badge-turquoise">Presence</span>
             </div>
           </div>
 
@@ -531,9 +568,9 @@
               Grace over ego. Excellence over noise. Service over spotlight. Faith as foundation, not performance.
             </p>
             <div class="badge-row">
-              <span class="badge">Faith leaning</span>
-              <span class="badge">Modern luxury</span>
-              <span class="badge">Multi generational</span>
+              <span class="badge badge-gold">Faith leaning</span>
+              <span class="badge badge-purple">Modern luxury</span>
+              <span class="badge badge-pink">Multi generational</span>
             </div>
           </div>
         </div>
@@ -553,21 +590,21 @@
           <div class="inner">
             <span class="event-label">Now Featured</span>
 
-            <h4><span class="pink">Pearls in Power</span> Mother’s Day Brunch</h4>
+            <h4><span class="pink">Pearls in Power</span> <span class="turquoise">Mother’s Day Brunch</span></h4>
 
             <p>
               Join us for a special Mother’s Day brunch experience celebrating grace, womanhood, and elevated presence. Reserve your seat through Eventbrite.
             </p>
 
             <div class="badge-row" style="margin-top:16px;">
-              <span class="badge">Mother’s Day Brunch</span>
-              <span class="badge">Eventbrite Registration</span>
-              <span class="badge">The Elevated Grace Collective</span>
+              <span class="badge badge-pink">Mother’s Day Brunch</span>
+              <span class="badge badge-turquoise">Eventbrite Registration</span>
+              <span class="badge badge-gold">The Elevated Grace Collective</span>
             </div>
 
             <div class="btn-row" style="margin-top:20px;">
               <a class="btn btn-primary" href="https://www.eventbrite.com/e/pearls-in-power-mothers-day-brunch-tickets-1985527372821?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer">Reserve Your Seat</a>
-              <a class="btn" href="#contact">Partner for This Event</a>
+              <a class="btn btn-secondary" href="#contact">Partner for This Event</a>
             </div>
           </div>
         </div>
@@ -655,7 +692,7 @@
           <div class="panel panel-pad card">
             <h4>Connect with us</h4>
             <div class="contact-list">
-              <div><strong>Email:</strong> <a href="mailto:gracepoisedpretty@gmail.com">gracepoisedpretty@gmail.com</a></div>
+              <div><strong>Email:</strong> <a href="mailto:gracepoisepretty@gmail.com">gracepoisepretty@gmail.com</a></div>
               <div><strong>Location:</strong> Illinois</div>
               <div><strong>Social:</strong> @elevatedgracecollective</div>
             </div>
